@@ -6,9 +6,9 @@ require 'account.rb'
 
 class Bank
   
+#include account
   
-  
-  attr_reader :accounts, :bank_name
+  attr_reader :accounts, :bank_name, :id_number
 
   def initialize(bank_name)
     @bank_name = bank_name
@@ -19,8 +19,14 @@ class Bank
   def make_new_account(customer_name, initial_dep)
     @id_number += 1
     new_account = Account.new(customer_name, initial_dep)
-    @accounts [@id_number] = new_account
+    @accounts[@id_number] = new_account
     return @id_number
+  end
+  
+  def bank_deposit(account_id, deposit_amount)
+    current_account = @accounts[account_id]
+    return current_account.deposit(deposit_amount)
+    #return 25115
   end
 
   # def access_accounts
