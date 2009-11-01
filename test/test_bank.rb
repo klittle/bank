@@ -8,6 +8,7 @@
 $: << 'lib'
 require 'test/unit'
 require 'bank.rb'
+require 'account.rb'
 
 ###
 # NOTE: these tests are just hints, go nuts with them and/or the design...
@@ -16,12 +17,17 @@ require 'bank.rb'
 class TestBank < Test::Unit::TestCase
 
   def setup
-    # @bank_name = Bank.new("Honest Bank")
-    #  @accounts = Account.new("Million Manny")
+    @new_bank = Bank.new("Honest Bank")
   end
 
   def test_make_new_acct
-    assert_equal 0, 0
+    @account_id = @new_bank.make_new_account("Tim Small", 25000)
+    
+    current_account = @new_bank.accounts[@account_id]
+    assert_equal "Tim Small", current_account.name
+    assert_equal 1, @account_id
+    assert_equal Account, current_account.class
+    
     # assert_equal Account.new("Million Manny", 15)
     #figure out way to make sure there isn't an acct. already
     #Do I need to assign acct number here
