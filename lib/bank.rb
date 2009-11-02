@@ -23,8 +23,8 @@ class Bank
     return @id_number
   end
   
-  def bank_deposit(account_id, deposit_amount)
-    current_account = @accounts[account_id]
+  def bank_deposit(account_no, deposit_amount)
+    current_account = @accounts[account_no]
     return current_account.deposit(deposit_amount)
     #return 25115
   end
