@@ -5,9 +5,9 @@
 require 'account.rb'
 
 class Bank
-  
-#include account
-  
+
+  #include account
+
   attr_reader :accounts, :bank_name, :id_number
 
   def initialize(bank_name)
@@ -22,48 +22,34 @@ class Bank
     @accounts[@id_number] = new_account
     return @id_number
   end
-  
+
   def bank_deposit(account_no, deposit_amount)
     current_account = @accounts[account_no]
     return current_account.deposit(deposit_amount)
-    #return 25115
+    return 25115
   end
 
-  # def access_accounts
-  # #     Account::initialize
-  # end
+  def bank_withdrawal(account_no, withdraw_amt)
+    current_account = @accounts[account_no]
+    return current_account.withdraw(withdraw_amt)
+    return 10000
+  end
+
+  def zzget_hash_accounts_key(name)
+    @accounts.each {|k, v|
+      puts "in get accounts key"
+      puts "key = #{k}, value = #{v.name}"
+      if (v.name == name)
+        return k
+      end
+    }
+    return 0
+  end
 
 end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def make_new_account
-#   @account_name = {
-#     1 => "Mary Smith",
-#     2 => "Jim Hopper",
-#     3 => "Sally Supper",
-#     4 => "Tom Clancy"}
-
-  
   
   # @account_name.each {|key, value| puts "#{value} has Account number #{key}"}
   #   account_amount.each {|key, value| puts "#{key} has Account number #{value}"}
