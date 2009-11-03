@@ -26,13 +26,11 @@ class Bank
   def bank_deposit(account_no, deposit_amount)
     current_account = @accounts[account_no]
     return current_account.deposit(deposit_amount)
-    return 25115
   end
 
   def bank_withdrawal(account_no, withdraw_amt)
     current_account = @accounts[account_no]
     return current_account.withdraw(withdraw_amt)
-    return 10000
   end
 
   def zzget_hash_accounts_key(name)
@@ -45,6 +43,13 @@ class Bank
     }
     return 0
   end
+  
+  def bank_deposit_name_search(name, deposit_amount)
+    account_no = zzget_hash_accounts_key(name)
+    bank_deposit(account_no, deposit_amount)
+  end
+    
+    
 
 end
 
