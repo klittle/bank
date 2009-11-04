@@ -17,6 +17,12 @@ class TestBank < Test::Unit::TestCase
   def setup
     puts "in setup"
     @new_bank = Bank.new("Honest Bank")
+    @account_no = @new_bank.make_new_account("Mary Pepper", 15000)
+     @account_no = @new_bank.make_new_account("Mary Smith", 25000)
+     @account_no = @new_bank.make_new_account("Jim Hopper", 10000)
+     @account_no = @new_bank.make_new_account("Tom Clancy", 5000)
+     @account_no = @new_bank.make_new_account("Harold Salt", 1000)
+     @account_no = @new_bank.make_new_account("Jim Jones", 50)
   end
 
   def test_make_new_account
@@ -25,7 +31,7 @@ class TestBank < Test::Unit::TestCase
     puts "@account_no = #{@account_no}"
     current_account = @new_bank.accounts[@account_no]
 
-    assert_equal 1, @account_no
+    assert_equal 7, @account_no
     assert_equal Account, current_account.class
     assert_equal "Tim Small", current_account.name
     
@@ -61,28 +67,16 @@ class TestBank < Test::Unit::TestCase
     puts "new_balance = #{new_balance}"
     assert_equal new_balance, @new_bank.bank_withdrawal(@account_no, withdraw_amt)
   end
-  
- # def test_zadd_clients
- #    @new_bank.make_new_account("Mary Pepper", 15000)
- #    @new_bank.make_new_account("Mary Smith", 25000)
- #    @new_bank.make_new_account("Jim Hopper", 10000)
- #    @new_bank.make_new_account("Tom Clancy", 5000)
- #    @new_bank.make_new_account("Harold Salt", 1000)
- #    @new_bank.make_new_account("Jim Jones", 50)
- #  # @new_bank.accounts.each {|key, value| puts "#{value} has Account number #{key}"}
- #   #@new_bank.accounts.each {|key, value| puts "#{key} has #{value}"}
- # end
  
  def test_zzget_hash_accounts_key
-   @account_no = @new_bank.make_new_account("Mary Pepper", 15000)
-   @account_no = @new_bank.make_new_account("Mary Smith", 25000)
-   @account_no = @new_bank.make_new_account("Jim Hopper", 10000)
-   @account_no = @new_bank.make_new_account("Tom Clancy", 5000)
-   @account_no = @new_bank.make_new_account("Harold Salt", 1000)
-   @account_no = @new_bank.make_new_account("Jim Jones", 50)
    assert_equal 4, @new_bank.zzget_hash_accounts_key("Tom Clancy")
  end
-   
+ 
+ def test_bank_deposit_name_search_known
+   x = @new_bank.bank_deposit_name_search_known("Tom Clancy", 25.00)
+   puts x 
+   #assert_equal "Harold Salt", @new_bank.zz_hash_accounts_key("Harold Salt")
+ end
 
   # def test_deposit_to_acct_unknown_person
   #   flunk "write me"

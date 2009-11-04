@@ -44,7 +44,7 @@ class Bank
     return 0
   end
   
-  def bank_deposit_name_search(name, deposit_amount)
+  def bank_deposit_name_search_known(name, deposit_amount)
     account_no = zzget_hash_accounts_key(name)
     bank_deposit(account_no, deposit_amount)
   end
