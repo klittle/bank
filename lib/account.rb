@@ -6,7 +6,7 @@
 class Account
   
   attr_reader :name, :balance
-  # Ref Thomas pg 25
+  
   def initialize(name, starting_balance)
     @name = name
     @balance = starting_balance

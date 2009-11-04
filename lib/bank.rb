@@ -33,34 +33,33 @@ class Bank
     return current_account.withdraw(withdraw_amt)
   end
 
-  def zzget_hash_accounts_key(name)
+  def get_hash_accounts_key(name)
     @accounts.each {|k, v|
-      puts "in get accounts key"
-      puts "key = #{k}, value = #{v.name}"
+      #puts "key = #{k}, value = #{v.name}"
       if (v.name == name)
         return k
       end
     }
-    return 0
+    return "No account for this person."
   end
   
-  def bank_deposit_name_search_known(name, deposit_amount)
-    account_no = zzget_hash_accounts_key(name)
+  def bank_deposit_by_name(name, deposit_amount)
+    account_no = get_hash_accounts_key(name)
     bank_deposit(account_no, deposit_amount)
   end
-    
-    
+  
+  def bank_withdraw_by_name(name, withdrawal_amount)
+    account_no = get_hash_accounts_key(name)
+    bank_withdrawal(account_no, withdrawal_amount)
+  end
+  
+  def bank_withdraw_overdraft_by_name(name, withdrawal_amount)
+    account_no = get_hash_accounts_key(name)
+    bank_withdrawal(account_no, withdrawal_amount)
+  end  
 
 end
 
-
-
-  
   # @account_name.each {|key, value| puts "#{value} has Account number #{key}"}
   #   account_amount.each {|key, value| puts "#{key} has Account number #{value}"}
   #   end
-  
-
-
-
-
